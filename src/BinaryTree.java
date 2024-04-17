@@ -43,6 +43,15 @@ public class BinaryTree<T> implements Iterable<T> {
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
+  public void elements02(PrintWriter pen) {
+    elements02(root, pen, " ");
+    System.out.println();
+  }
+
+  public void elements01(PrintWriter pen) {
+    elements01(root, pen, " ");
+    System.out.println();
+  }
 
   /**
    * Dump the tree to some output location.
@@ -71,6 +80,32 @@ public class BinaryTree<T> implements Iterable<T> {
   // +---------+-----------------------------------------------------
   // | Helpers |
   // +---------+
+
+  void elements02(BinaryTreeNode<T> node, PrintWriter pen, String space) {
+    if (node == null) {
+      pen.printf("");
+    } else if (node.left != null) {
+      elements02(node.left, pen, space);}
+      pen.printf(node.value + space);
+       if (node.right != null) {
+      elements02(node.right, pen, space);
+      pen.printf(node.value + space);
+    }
+    pen.printf(node.value + space);
+  }
+
+
+  void elements01(BinaryTreeNode<T> node, PrintWriter pen, String space) {
+    if (node == null) {
+      pen.printf("");
+    } else {
+      pen.printf(node.value + space);
+      if ((node.left != null) || (node.right != null)) {
+        elements01(node.left, pen, space);
+        elements01(node.right, pen, space);
+      }
+    }
+  }
 
   /**
    * Dump a portion of the tree to some output location.
